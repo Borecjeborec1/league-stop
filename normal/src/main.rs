@@ -1,6 +1,7 @@
 #![windows_subsystem = "windows"]
 use std::env;
 use std::fs;
+use std::os::windows::process::CommandExt;
 use std::process::Command;
 
 fn main() {
@@ -30,25 +31,35 @@ fn main() {
             )
             .unwrap();
         }
-        let mut log = String::new();
+        // let mut log = String::new();
 
-        let output = Command::new("tasklist")
-            .arg("/fi")
-            .arg("imagename eq LeagueClient.exe")
-            .output()
-            .expect("Failed to execute command");
-        log.push_str(match std::str::from_utf8(&output.stdout) {
-            Ok(val) => val,
-            Err(_) => panic!("got non UTF-8 data from git"),
-        });
-        if log.contains("LeagueClient.exe") {
-            Command::new("taskkill")
-                .arg("/F")
-                .arg("/IM")
-                .arg("LeagueClient.exe")
-                .output()
-                .expect("Failed to execute command");
-        }
-        std::thread::sleep(std::time::Duration::from_secs(10));
+        // let output = Command::new("tasklist")
+        //     .arg("/fi")
+        //     .arg("imagename eq LeagueClient.exe")
+        //     .output()
+        //     .expect("Failed to execute command");
+        // log.push_str(match std::str::from_utf8(&output.stdout) {
+        //     Ok(val) => val,
+        //     Err(_) => panic!("got non UTF-8 data from git"),
+        // });
+        // if log.contains("LeagueClient.exe") {
+        //     Command::new("taskkill")
+        //         .arg("/F")
+        //         .arg("/IM")
+        //         .arg("LeagueClient.exe")
+        //         .output()
+        //         .expect("Failed to execute command");
+        // }
+        const CREATE_NO_WINDOW: u32 = 0x08000000;
+        let command = Command::new("taskkill")
+            .arg("/F")
+            .arg("/IM")
+            .arg("LeagueClient.exe")
+            // .output()
+            // .expect("Failed to execute command");
+            .creation_flags(CREATE_NO_WINDOW)
+            .spawn();
+        println!("{:?}", command);
+        std::thread::sleep(std::time::Duration::from_secs(30));
     }
 }

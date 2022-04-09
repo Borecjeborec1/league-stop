@@ -5,7 +5,9 @@
   "main": "build/deploy.js",
   "scripts": {
     "tsc": "tsc",
-    "build:deploy": "npm run tsc && node build/deploy.js",
+    "build:normal": "cd normal && cargo build --release",
+    "build:weak": "cd weak && cargo build --release",
+    "build:deploy": "npm run build:normal && npm run build:weak && npm run tsc && node build/deploy.js",
     "build:version": "npm run tsc && node build/version.js"
   },
   "repository": {
