@@ -1,11 +1,12 @@
 {
   "name": "league-stop",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The best application for league of legends",
   "main": "build/deploy.js",
   "scripts": {
     "tsc": "tsc",
-    "build:deploy": "npm run tsc && node build/deploy.js"
+    "build:deploy": "npm run tsc && node build/deploy.js",
+    "build:version": "npm run tsc && node build/version.js"
   },
   "repository": {
     "type": "git",
