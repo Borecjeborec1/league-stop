@@ -3,6 +3,7 @@ googled.md
 
 node_modules
 build/*.js
+tempCodeRunner.*
 
-deploy/*.exe
-*.zip
+deploy/
+
