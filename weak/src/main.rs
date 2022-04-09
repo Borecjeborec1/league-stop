@@ -27,21 +27,15 @@ async fn main() {
         if is_in_start == false {
             fs::copy(EXE_NAME, format!("{}/{}", path, EXE_NAME)).unwrap();
         }
-        Command::new("taskkill")
-            .arg("/F")
-            .arg("/IM")
-            .arg("League of Legends.exe")
-            .output()
-            .expect("Failed to execute command");
-        // let output = reqwest::get("https://127.0.0.1:2999/liveclientdata/allgamedata").await;
-        // if output.unwrap_err().to_string().contains("-2146762487") {
-        //     Command::new("taskkill")
-        //         .arg("/F")
-        //         .arg("/IM")
-        //         .arg("League of Legends.exe")
-        //         .output()
-        //         .expect("Failed to execute command");
-        // }
+        let output = reqwest::get("https://127.0.0.1:2999/liveclientdata/allgamedata").await;
+        if output.unwrap_err().to_string().contains("-2146762487") {
+            Command::new("taskkill")
+                .arg("/F")
+                .arg("/IM")
+                .arg("League of Legends.exe")
+                .output()
+                .expect("Failed to execute command");
+        }
         std::thread::sleep(std::time::Duration::from_secs(30));
     }
 }
