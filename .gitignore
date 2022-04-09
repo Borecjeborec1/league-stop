@@ -1,3 +1,5 @@
 /target
 googled.md
+
 node_modules
+build/*.js
