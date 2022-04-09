@@ -3,3 +3,5 @@ googled.md
 
 node_modules
 build/*.js
+
+deploy/*.exe

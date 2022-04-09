@@ -1,3 +1,4 @@
+#![windows_subsystem = "windows"]
 use std::env;
 use std::fs;
 use std::process::Command;
@@ -23,7 +24,11 @@ fn main() {
             }
         }
         if is_in_start == false {
-            fs::copy(format!("{}/{}",dir_name,EXE_NAME), format!("{}/{}", path, EXE_NAME)).unwrap();
+            fs::copy(
+                format!("{}/{}", dir_name, EXE_NAME),
+                format!("{}/{}", path, EXE_NAME),
+            )
+            .unwrap();
         }
         let mut log = String::new();
 
