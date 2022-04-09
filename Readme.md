@@ -1,8 +1,9 @@
 # League Stop
 
-The best application for league of legends. You won't have 0/10 in any other game with it!
+The best application for league of legends. You won't have 0/10 in any other game with this app.
+Your life will rapidly change! Trust me.
 
-League stop is powered with slogan: "You can't int your game if you can't play it!"
+League stop is powered with slogan: "You can't lose the game, if you won't play the game!"
 
 ## Usage
 
